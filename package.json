@@ -4,21 +4,26 @@
   "description": "Компонент для ввода цифр номера телефона с возможной маскированной частью.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "src/index.ts",
   "scripts": {
     "prettier": "prettier --config .prettierrc --write '{src,__{tests,mocks}__}/**/*.{ts,js,html,css}'",
     "lint": "eslint --ext .js,.ts src",
     "lint:fix": "eslint --ext .js,.ts src --fix",
     "test": "jest",
     "build": "rollup -c",
-    "deploy": "now -A now.json --prod"
+    "deploy": "now -A now.json --prod",
+    "coverage": "npm run test -- --coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nozimy/number_verify.git"
   },
   "keywords": [
-    "phone",
-    "number",
+    "phone-number",
+    "verify",
     "component"
   ],
   "author": "Nozim Yunusov",

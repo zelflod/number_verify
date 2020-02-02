@@ -1,7 +1,11 @@
-import { NumberInput } from '../index';
+import { NumberInput } from './index';
 
 describe('NumberInput Component', () => {
     const root = 'my-input';
+
+    beforeEach(function() {
+        document.body.innerHTML = `<input class="" id="${root}"/>`;
+    });
 
     it('should throw error', function() {
         let component: NumberInput | undefined;
@@ -18,16 +22,12 @@ describe('NumberInput Component', () => {
     });
 
     it('should create component', function() {
-        document.body.innerHTML = `<input class="" id="${root}"/>`;
-
         const component = new NumberInput(root);
 
         expect(component).not.toBeUndefined();
     });
 
     it('should replace initial input nad have empty cells', function() {
-        document.body.innerHTML = `<input class="" id="${root}"/>`;
-
         const expected = document.createElement('div');
         expected.classList.add('number-input');
         expected.innerHTML = `<input class="" id="${root}" type="hidden"/><div class="cells-wrap"></div>`;
@@ -40,7 +40,6 @@ describe('NumberInput Component', () => {
     });
 
     it('should create cells by mask', function() {
-        document.body.innerHTML = `<input class="" id="${root}"/>`;
         const expected = document.createElement('div');
         expected.classList.add('number-input');
         expected.innerHTML =
@@ -72,7 +71,6 @@ describe('NumberInput Component', () => {
     });
 
     it('should take value as input', function() {
-        document.body.innerHTML = `<input class="" id="${root}"/>`;
         const value = '77';
 
         const component = new NumberInput(root, {
@@ -86,7 +84,6 @@ describe('NumberInput Component', () => {
     });
 
     it('should set props', function() {
-        document.body.innerHTML = `<input class="" id="${root}"/>`;
         const newValue = '77';
         const newMask = '+7(777)II-**';
 
@@ -110,7 +107,6 @@ describe('NumberInput Component', () => {
     });
 
     it('should show error', function() {
-        document.body.innerHTML = `<input class="" id="${root}"/>`;
         const errorMessage = 'SOME ERROR MESSAGE';
 
         new NumberInput(root, {

@@ -27,4 +27,4 @@ jobs:
     - stage: test
       script: npm run test
     - stage: publish
-      script: npm run deploy
+      script: npm run deploy -- --token=$NOW_TOKEN

@@ -5,12 +5,12 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "scripts": {
+    "prettier": "prettier --config .prettierrc --write '{src,__{tests,mocks}__}/**/*.{ts,js,html,css}'",
     "lint": "eslint --ext .js,.ts src",
     "lint:fix": "eslint --ext .js,.ts src --fix",
     "test": "jest",
     "build": "rollup -c",
-    "now": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --config .prettierrc --write '{src,__{tests,mocks}__}/**/*.{ts,js,html,css}'"
+    "deploy": "now -A now.json --prod"
   },
   "repository": {
     "type": "git",

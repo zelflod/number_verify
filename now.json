@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "name": "number-verify",
+  "alias": ["number-verify"],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    { "src": "demo/**", "use": "@now/static" },
+    { "src": "dist/**", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "demo/index.html" },
+    { "src": "/(.*)", "dest": "demo/$1" },
+    { "src": "/dist/(.*)", "dest": "dist/$1" }
+  ]
+}

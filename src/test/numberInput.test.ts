@@ -4,8 +4,8 @@ describe('NumberInput Component', () => {
     const root = 'my-input';
 
     it('should throw error', function () {
-        let component: NumberInput;
-        let err: string;
+        let component: NumberInput | undefined;
+        let err: Error | undefined;
 
         try {
             component = new NumberInput('some-not-existed-id');
@@ -13,16 +13,15 @@ describe('NumberInput Component', () => {
             err = e;
         }
 
-        // @ts-ignore
+
         expect(component).toBeUndefined();
-        // @ts-ignore
         expect(err).not.toBeUndefined();
     });
 
     it('should create component', function () {
         document.body.innerHTML = `<input class="" id="${root}"/>`;
 
-        let component = new NumberInput(root);
+        const component = new NumberInput(root);
 
         expect(component).not.toBeUndefined();
     });
@@ -120,7 +119,8 @@ describe('NumberInput Component', () => {
         const errEl = el.querySelector('.error-text');
 
         expect(errEl).not.toBeUndefined();
-        // @ts-ignore
-        expect(errEl.textContent).toBe(errorMessage);
+        if (errEl) {
+            expect(errEl.textContent).toBe(errorMessage);
+        }
     });
 });

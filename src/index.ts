@@ -6,7 +6,7 @@ import Cell from "./components/cell/cell";
 
 
 export class NumberInput {
-    public value: string = '';
+    public value = '';
 
     protected cells: InputCell[] = [];
     protected root: HTMLElement = document.createElement('div');
@@ -42,27 +42,27 @@ export class NumberInput {
         this.postRender();
     }
 
-    get valid(){
+    get valid(): boolean {
         return this.settings.valid;
     }
 
-    get mask(){
+    get mask(): string {
         return this.settings.mask;
     }
 
-    render() {
+    render(): void {
         this.createCellsByMask(this.settings.mask);
 
         this.showErrorText(this.settings.errorMessage);
     }
 
-    postRender() {
+    postRender(): void {
         this.cells.forEach(c => {
             c.postRender();
         });
     }
 
-    setProps(newProps?: Props) {
+    setProps(newProps?: Props): void {
         this.settings = {
             ...this.settings,
             ...newProps
@@ -73,10 +73,11 @@ export class NumberInput {
         this.postRender();
     }
 
-    private replaceInitialInput(){
+    private replaceInitialInput(): void {
         this.root.classList.add('number-input');
-        // @ts-ignore
-        this.initialInput.parentNode.replaceChild(this.root, this.initialInput);
+        if (this.initialInput.parentNode) {
+            this.initialInput.parentNode.replaceChild(this.root, this.initialInput);
+        }
 
         this.initialInput.type = 'hidden';
         this.root.appendChild(this.initialInput);
@@ -85,7 +86,7 @@ export class NumberInput {
         this.root.appendChild(this.cellWrapper);
     }
 
-    private createCellsByMask(mask: string) {
+    private createCellsByMask(mask: string): void {
         let template = '';
 
         if (mask.length < 1) {
@@ -116,7 +117,7 @@ export class NumberInput {
         this.cellWrapper.innerHTML = template;
     }
 
-    private showErrorText(text: string) {
+    private showErrorText(text: string): void {
         if (this.settings.valid || !text) {
             this.removeError();
 
@@ -126,13 +127,13 @@ export class NumberInput {
         this.addError(text);
     }
 
-    private removeError() {
+    private removeError(): void {
         if (this.err && this.root.contains(this.err)) {
             this.root.removeChild(this.err as HTMLElement);
         }
     }
 
-    private addError(text: string) {
+    private addError(text: string): void {
         if (!this.err) {
             this.err = document.createElement('div');
             this.err.classList.add('error-text');
@@ -142,7 +143,7 @@ export class NumberInput {
         this.root.appendChild(this.err);
     }
 
-    private onCellInputChange() {
+    private onCellInputChange(): void {
         this.value = this.cells.reduce((accum, cur) => accum += cur.value, '');
 
         this.initialInput.value = this.value;

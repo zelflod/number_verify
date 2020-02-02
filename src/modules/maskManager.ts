@@ -4,7 +4,7 @@ export default class MaskManager {
     readonly asterisk = '*';
     readonly input = 'I';
 
-    isNumber(char: string) {
+    isNumber(char: string): boolean {
         return !!Number(char)
     }
 }

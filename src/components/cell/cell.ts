@@ -16,7 +16,7 @@ export default class Cell {
         this.render();
     }
 
-    render() {
+    render(): void {
         if (this.maskManager.isNumber(this.char)) {
             this.template = this.getGrayCell(this.char);
         } else if (this.char === this.maskManager.asterisk) {
@@ -28,15 +28,15 @@ export default class Cell {
         }
     }
 
-    getGrayCell(char: string) {
+    getGrayCell(char: string): string {
         return `<span class='cell cell_gray'>${char}</span>`
     }
 
-    getCellTemplateForAsterisk() {
+    getCellTemplateForAsterisk(): string {
         return this.getGrayCell(this.maskManager.dot)
     }
 
-    getCellTemplateForEx() {
+    getCellTemplateForEx(): string {
         return this.getGrayCell(this.maskManager.ex)
     }
 }

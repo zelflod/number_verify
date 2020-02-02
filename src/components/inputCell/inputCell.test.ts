@@ -5,7 +5,7 @@ describe('InputCell Component', () => {
         const component = new InputCell({
             value: "",
             valid: false,
-            onChange: () => null
+            onChange: (): null => null
         });
 
         expect(component).toBeDefined();
@@ -28,13 +28,16 @@ describe('InputCell Component', () => {
         const component = new InputCell({
             value: "",
             valid: valid,
-            onChange: () => null
+            onChange: (): null => null
         });
 
         const div = document.createElement('div');
         div.innerHTML = component.template;
-        // @ts-ignore
-        div.querySelector('.input-cell').id = '';
+
+        const cell = div.querySelector('.input-cell');
+        if (cell) {
+            cell.id = '';
+        }
 
         expect(div).toEqual(expected);
     });
@@ -56,13 +59,16 @@ describe('InputCell Component', () => {
         const component = new InputCell({
             value: "",
             valid: valid,
-            onChange: () => null
+            onChange: (): null => null
         });
 
         const div = document.createElement('div');
         div.innerHTML = component.template;
-        // @ts-ignore
-        div.querySelector('.input-cell').id = '';
+
+        const cell = div.querySelector('.input-cell');
+        if (cell) {
+            cell.id = '';
+        }
 
         expect(div).toEqual(expected);
     });
@@ -73,7 +79,7 @@ describe('InputCell Component', () => {
         const component = new InputCell({
             value: value,
             valid: true,
-            onChange: () => null
+            onChange: (): null => null
         });
         document.body.innerHTML = component.template;
 

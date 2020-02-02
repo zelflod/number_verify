@@ -8,14 +8,14 @@ export default class InputCell {
     public template = '';
     public id: string;
 
-    private props: any;
+    private props: InputCellProps;
     private readonly maxLength: number;
 
-    get el() {
+    get el(): HTMLElement | null {
         return document.getElementById(this.id);
     }
 
-    get value() {
+    get value(): string {
         if (this.el) {
             return (this.el as HTMLInputElement).value;
         }
@@ -23,7 +23,7 @@ export default class InputCell {
         return '';
     }
 
-    constructor({onChange = () => null, valid = false, value = '', maxLength = 1}: InputCellProps) {
+    constructor({onChange = (): null => null, valid = false, value = '', maxLength = 1}: InputCellProps) {
         this.id = this.constructor.name + uniqueId();
         this.props = {
             onChange,
@@ -35,7 +35,7 @@ export default class InputCell {
         this.render();
     }
 
-    render() {
+    render(): void {
         this.template = `<input id="${this.id}" 
                             type="number" 
                             maxlength="1" 
@@ -46,7 +46,7 @@ export default class InputCell {
                             placeholder="_"/>`;
     }
 
-    postRender() {
+    postRender(): void {
         if (!this.el) {
             return;
         }
@@ -57,7 +57,7 @@ export default class InputCell {
         this.el.addEventListener('keydown', this.onKeyDown);
     }
 
-    private onCellInputChange(e: Event) {
+    private onCellInputChange(e: Event): void {
         const target = e.target as HTMLInputElement;
         if (target.value.length > this.maxLength) {
             target.value = target.value.slice(0, this.maxLength);
@@ -72,7 +72,7 @@ export default class InputCell {
         this.props.onChange();
     }
 
-    private onKeyDown(e: KeyboardEvent) {
+    private onKeyDown(e: KeyboardEvent): void {
         const target = e.target as HTMLInputElement;
 
         if (e.keyCode === keyCodes.arrowLeft) {

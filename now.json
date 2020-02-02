@@ -3,13 +3,6 @@
   "name": "number-verify",
   "alias": ["number-verify"],
   "builds": [
-    {
-      "src": "package.json",
-      "use": "@now/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
     { "src": "demo/**", "use": "@now/static" },
     { "src": "dist/**", "use": "@now/static" }
   ],

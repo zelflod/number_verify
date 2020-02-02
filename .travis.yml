@@ -13,17 +13,28 @@ branches:
   only:
     - master
 
+cache:
+  directories:
+    - node_modules/
+    - dist/
+
+
 jobs:
   include:
     - stage: install
       script: npm install
+      artifacts:
+        paths:
+          - node_modules/
     - stage: lint
       script: npm run lint
     - stage: build
       script: npm run build
+      artifacts:
+        paths:
+          - dist/
     - stage: test
       script: npm run test
     - stage: publish
       script:
-        - npm run build
         - npm run deploy -- --token=$NOW_TOKEN

@@ -3,8 +3,14 @@
   "name": "number-verify",
   "alias": ["number-verify"],
   "builds": [
-    { "src": "demo/**", "use": "@now/static" },
-    { "src": "dist/**", "use": "@now/static" }
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    { "src": "demo/**", "use": "@now/static" }
   ],
   "routes": [
     { "src": "/", "dest": "demo/index.html" },

@@ -2,29 +2,30 @@ language: node_js
 node_js:
   - 10
 
-stages:
-  - install
-  - lint
-  - build
-  - test
-  - publish
+#stages:
+#  - install
+#  - lint
+#  - build
+#  - test
+#  - publish
 
-#script:
-#  - npm run build
-#  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run deploy -- --token=$NOW_TOKEN; fi
+script:
+  - npm run build
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run deploy -- --token=$NOW_TOKEN; fi
+
 branches:
   only:
     - master
 
-jobs:
-  include:
-    - stage: install
-      script: npm install
-    - stage: lint
-      script: npm run lint
-    - stage: build
-      script: npm run build
-    - stage: test
-      script: npm run test
-    - stage: publish
-      script: npm run deploy -- --token=$NOW_TOKEN
+#jobs:
+#  include:
+#    - stage: install
+#      script: npm install
+#    - stage: lint
+#      script: npm run lint
+#    - stage: build
+#      script: npm run build
+#    - stage: test
+#      script: npm run test
+#    - stage: publish
+#      script: npm run deploy -- --token=$NOW_TOKEN

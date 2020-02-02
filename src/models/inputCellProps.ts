@@ -1,5 +1,5 @@
 export default interface InputCellProps {
-    onChange: () => null;
+    onChange: () => void;
     valid: boolean;
     value: string;
     maxLength?: number;

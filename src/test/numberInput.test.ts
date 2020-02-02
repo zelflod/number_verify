@@ -1,9 +1,9 @@
-import {NumberInput} from "../index";
+import { NumberInput } from '../index';
 
 describe('NumberInput Component', () => {
     const root = 'my-input';
 
-    it('should throw error', function () {
+    it('should throw error', function() {
         let component: NumberInput | undefined;
         let err: Error | undefined;
 
@@ -13,12 +13,11 @@ describe('NumberInput Component', () => {
             err = e;
         }
 
-
         expect(component).toBeUndefined();
         expect(err).not.toBeUndefined();
     });
 
-    it('should create component', function () {
+    it('should create component', function() {
         document.body.innerHTML = `<input class="" id="${root}"/>`;
 
         const component = new NumberInput(root);
@@ -26,7 +25,7 @@ describe('NumberInput Component', () => {
         expect(component).not.toBeUndefined();
     });
 
-    it('should replace initial input nad have empty cells', function () {
+    it('should replace initial input nad have empty cells', function() {
         document.body.innerHTML = `<input class="" id="${root}"/>`;
 
         const expected = document.createElement('div');
@@ -40,61 +39,67 @@ describe('NumberInput Component', () => {
         expect(el).toEqual(expected);
     });
 
-    it('should create cells by mask', function () {
+    it('should create cells by mask', function() {
         document.body.innerHTML = `<input class="" id="${root}"/>`;
         const expected = document.createElement('div');
         expected.classList.add('number-input');
-        expected.innerHTML = `<input class="" id="${root}" type="hidden"/><div class="cells-wrap">` +
-            '+<span class="cell cell_gray">7</span>(<span class="cell cell_gray">9</span>'+
-            '<span class="cell cell_gray">8</span><span class="cell cell_gray">5</span>)'+
-            '<input id="" type="number" maxlength="1" min="0" max="9" step="1" '+
-            'class="cell input-cell " value="" placeholder="_">'+'<input id="" '+
-            'type="number" maxlength="1" min="0" max="9" step="1" class="cell input-cell " value="" '+
-            'placeholder="_">-<span class="cell cell_gray">X</span><span class="cell cell_gray">●</span>'+
+        expected.innerHTML =
+            `<input class="" id="${root}" type="hidden"/><div class="cells-wrap">` +
+            '+<span class="cell cell_gray">7</span>(<span class="cell cell_gray">9</span>' +
+            '<span class="cell cell_gray">8</span><span class="cell cell_gray">5</span>)' +
+            '<input id="" type="number" maxlength="1" min="0" max="9" step="1" ' +
+            'class="cell input-cell " value="" placeholder="_">' +
+            '<input id="" ' +
+            'type="number" maxlength="1" min="0" max="9" step="1" class="cell input-cell " value="" ' +
+            'placeholder="_">-<span class="cell cell_gray">X</span><span class="cell cell_gray">●</span>' +
             '-<span class="cell cell_gray">●</span><span class="cell cell_gray">●</span>' +
             '</div>';
 
         new NumberInput(root, {
             mask: '+7(985)II-X*-**',
-            errorMessage: "", valid: true, value: ""
+            errorMessage: '',
+            valid: true,
+            value: '',
         });
 
         const el = document.querySelector('.number-input') as HTMLElement;
-        el.querySelectorAll('.input-cell').forEach(inp => {
-           inp.id = '';
+        el.querySelectorAll('.input-cell').forEach((inp) => {
+            inp.id = '';
         });
 
         expect(el).not.toBeUndefined();
         expect(el).toEqual(expected);
     });
 
-    it('should take value as input', function () {
+    it('should take value as input', function() {
         document.body.innerHTML = `<input class="" id="${root}"/>`;
         const value = '77';
 
         const component = new NumberInput(root, {
             mask: '+7(985)II-X*-**',
-            errorMessage: "", valid: true, value: value
+            errorMessage: '',
+            valid: true,
+            value: value,
         });
 
         expect(component.value).toEqual(value);
     });
 
-    it('should set props', function () {
+    it('should set props', function() {
         document.body.innerHTML = `<input class="" id="${root}"/>`;
         const newValue = '77';
         const newMask = '+7(777)II-**';
 
         const component = new NumberInput(root, {
             mask: '+7(985)II-X*-**',
-            errorMessage: "",
+            errorMessage: '',
             valid: true,
             value: '11',
         });
 
         component.setProps({
             mask: newMask,
-            errorMessage: "",
+            errorMessage: '',
             valid: false,
             value: newValue,
         });
@@ -104,7 +109,7 @@ describe('NumberInput Component', () => {
         expect(component.mask).toBe(newMask);
     });
 
-    it('should show error', function () {
+    it('should show error', function() {
         document.body.innerHTML = `<input class="" id="${root}"/>`;
         const errorMessage = 'SOME ERROR MESSAGE';
 

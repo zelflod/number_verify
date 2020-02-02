@@ -1,4 +1,4 @@
-import MaskManager from "modules/maskManager";
+import MaskManager from 'modules/maskManager';
 
 export default interface CellProps {
     char: string;

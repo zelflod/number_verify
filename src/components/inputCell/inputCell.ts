@@ -1,8 +1,7 @@
-import {keyCodes, uniqueId} from "../../modules/utils";
+import { keyCodes, uniqueId } from '../../modules/utils';
 import './../cell/cell.css';
 import './inputCell.css';
-import InputCellProps from "../../models/inputCellProps";
-
+import InputCellProps from '../../models/inputCellProps';
 
 export default class InputCell {
     public template = '';
@@ -23,12 +22,17 @@ export default class InputCell {
         return '';
     }
 
-    constructor({onChange = (): null => null, valid = false, value = '', maxLength = 1}: InputCellProps) {
+    constructor({
+        onChange = (): null => null,
+        valid = false,
+        value = '',
+        maxLength = 1,
+    }: InputCellProps) {
         this.id = this.constructor.name + uniqueId();
         this.props = {
             onChange,
             valid,
-            value
+            value,
         };
         this.maxLength = maxLength;
 
@@ -41,7 +45,9 @@ export default class InputCell {
                             maxlength="1" 
                             min="0" max="9" 
                             step="1" 
-                            class="cell input-cell ${this.props.valid ? '' : 'input-cell_error'}"
+                            class="cell input-cell ${
+                                this.props.valid ? '' : 'input-cell_error'
+                            }"
                             value="${this.props.value}" 
                             placeholder="_"/>`;
     }
@@ -87,7 +93,11 @@ export default class InputCell {
             return;
         }
 
-        if ((e.keyCode === keyCodes.backspace || e.keyCode === keyCodes.delete) && target.value.length === 0) {
+        if (
+            (e.keyCode === keyCodes.backspace ||
+                e.keyCode === keyCodes.delete) &&
+            target.value.length === 0
+        ) {
             const sibling = target.previousElementSibling as HTMLElement;
             sibling.focus();
         }

@@ -5,6 +5,6 @@ export default class MaskManager {
     readonly input = 'I';
 
     isNumber(char: string): boolean {
-        return !!Number(char)
+        return !!Number(char);
     }
 }

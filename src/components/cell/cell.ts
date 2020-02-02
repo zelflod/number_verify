@@ -1,7 +1,6 @@
-import CellProps from "models/cellProps";
-import MaskManager from "modules/maskManager";
+import CellProps from 'models/cellProps';
+import MaskManager from 'modules/maskManager';
 import './cell.css';
-
 
 export default class Cell {
     public template = '';
@@ -9,7 +8,7 @@ export default class Cell {
     private readonly char: string = '';
     private maskManager: MaskManager;
 
-    constructor({char, maskManager}: CellProps) {
+    constructor({ char, maskManager }: CellProps) {
         this.char = char;
         this.maskManager = maskManager;
 
@@ -29,14 +28,14 @@ export default class Cell {
     }
 
     getGrayCell(char: string): string {
-        return `<span class='cell cell_gray'>${char}</span>`
+        return `<span class='cell cell_gray'>${char}</span>`;
     }
 
     getCellTemplateForAsterisk(): string {
-        return this.getGrayCell(this.maskManager.dot)
+        return this.getGrayCell(this.maskManager.dot);
     }
 
     getCellTemplateForEx(): string {
-        return this.getGrayCell(this.maskManager.ex)
+        return this.getGrayCell(this.maskManager.ex);
     }
 }

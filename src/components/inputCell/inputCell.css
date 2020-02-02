@@ -14,7 +14,8 @@
     margin: 0;
 }
 
-.input-cell::placeholder .input-cell::-webkit-input-placeholder, .input-cell:-ms-input-placeholder {
+.input-cell::placeholder .input-cell::-webkit-input-placeholder,
+.input-cell:-ms-input-placeholder {
     color: #999999;
 }
 
@@ -22,10 +23,11 @@
     border: 1px solid rgba(0, 0, 0, 0.24);
 }
 
-.input-cell:active, .input-cell:focus {
+.input-cell:active,
+.input-cell:focus {
     border: 1px solid rgba(0, 0, 0, 0.48);
 }
 
 .input-cell_error {
-    border: 1px solid #FF1100;
+    border: 1px solid #ff1100;
 }

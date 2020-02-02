@@ -15,6 +15,6 @@
   "routes": [
     { "src": "/", "dest": "demo/index.html" },
     { "src": "/(.*)", "dest": "demo/$1" },
-    { "src": "/dist/(.*)", "dest": "dist/$1" }
+    { "src": "/dist/(.*)", "dest": "/$1" }
   ]
 }

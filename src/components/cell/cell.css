@@ -1,0 +1,16 @@
+.cell {
+    width: 25px;
+    line-height: 32px;
+    font-family: Arial, serif;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 15px;
+    color: #333333;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.cell_gray {
+    background-color: #F0F0F0;
+}

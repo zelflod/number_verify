@@ -1,0 +1,12 @@
+.cells-wrap {
+    display: flex;
+    align-items: center;
+    font-family: Arial, serif;
+}
+
+.error-text {
+    color: #FF1100;
+    font-family: Arial, serif;
+    font-size: 13px;
+    line-height: 20px;
+}

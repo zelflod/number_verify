@@ -8,4 +8,10 @@ export default interface Props {
      * <не цифра> - символ отображается "как есть"
      */
     mask: string;
+
+    value: string;
+
+    valid: boolean;
+
+    errorMessage: string;
 }

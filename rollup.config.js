@@ -1,6 +1,7 @@
 import pkg from './package.json';
 import {terser} from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
+import postcss from 'rollup-plugin-postcss';
 
 
 module.exports = {
@@ -25,6 +26,10 @@ module.exports = {
 		typescript({
 			typescript: require('typescript'),
 			clean: true
-		})
+		}),
+		postcss({
+			extract: true,
+			minimize: true
+		}),
 	]
 };

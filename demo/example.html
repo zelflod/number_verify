@@ -3,9 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>NumVer Example</title>
+	<link href="../dist/index.es.css" rel="stylesheet">
+	<style>
+		.container {
+			margin: 40px;
+		}
+
+		.our-input {
+			margin-bottom: 20px;
+		}
+
+		.check-validity {
+			margin-top: 20px;
+		}
+	</style>
 </head>
-<body>
-<div class="container" id="container"></div>
+<body class="container">
+<div class="our-input">
+	<label for="our-input"></label><input id="our-input"/>
+
+	<button id="check1" class="check-validity">Check validity (valid: 77)</button>
+</div>
+
+<div class="our-input">
+	<label for="our-input2"></label><input id="our-input2"/>
+
+	<button id="check2" class="check-validity">Check validity (valid: 77)</button>
+</div>
+
 <script src="./example.js" type="module"></script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+.input-cell {
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    background: #ffffff;
+    line-height: 30px;
+    padding: 0;
+    -moz-appearance: textfield;
+}
+
+.input-cell::-webkit-inner-spin-button,
+.input-cell::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-cell::placeholder .input-cell::-webkit-input-placeholder, .input-cell:-ms-input-placeholder {
+    color: #999999;
+}
+
+.input-cell:hover {
+    border: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+.input-cell:active, .input-cell:focus {
+    border: 1px solid rgba(0, 0, 0, 0.48);
+}
+
+.input-cell_error {
+    border: 1px solid #FF1100;
+}

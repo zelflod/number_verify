@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="BackstopJS" tests="4" failures="0" errors="0" skipped="0">
+    <testcase classname="document" name=" ›› Phone Number Input"/>
+    <testcase classname="document" name=" ›› Phone Number Input - Hover"/>
+    <testcase classname="document" name=" ›› Phone Number Input - Active"/>
+    <testcase classname="document" name=" ›› Phone Number Input - Show error"/>
+  </testsuite>
+</testsuites>

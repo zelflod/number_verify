@@ -15,7 +15,10 @@
     "test": "jest",
     "build": "rollup -c",
     "deploy": "now -A now.json --prod",
-    "coverage": "npm run test -- --coverage"
+    "coverage": "npm run test -- --coverage",
+    "backstop:init": "docker run --rm -v $(pwd):/src backstopjs/backstopjs init",
+    "backstop:test": "docker run --rm -v $(pwd):/src backstopjs/backstopjs test",
+    "backstop:approve": "docker run --rm -v $(pwd):/src backstopjs/backstopjs reference"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,7 @@
     "@types/jest": "^25.1.1",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
+    "backstopjs": "^4.4.2",
     "eslint": "^6.8.0",
     "eslint-plugin-jest": "^23.6.0",
     "husky": "^4.2.1",

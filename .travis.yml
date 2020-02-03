@@ -1,43 +1,52 @@
 language: node_js
 node_js:
-- 10
+  - 10
+services:
+  - docker
 stages:
-- install
-- lint
-- build
-- test
-- publish
+  - install
+  - lint
+  - build
+  - test
+  - visual-regression-tests
+  - publish
+  - deploy-npm
 branches:
   only:
-  - master
+    - master
 cache:
   directories:
-  - node_modules/
-  - dist/
+    - node_modules/
+    - dist/
 jobs:
   include:
-  - stage: install
-    script: npm install
-    artifacts:
-      paths:
-      - node_modules/
-  - stage: lint
-    script: npm run lint
-  - stage: build
-    script: npm run build
-    artifacts:
-      paths:
-      - dist/
-  - stage: test
-    script: npm run test
-  - stage: publish
-    script:
-    - npm run deploy -- --token=$NOW_TOKEN
-deploy:
-  provider: npm
-  email: nozimdev@gmail.com
-  api_key:
-    secure: NfQGUW8x2MhRAlYtnB06DZYt6HGMIcSSzAT6wa3vvJlHB6zzUfu/jzYiOm3P8DrZiXVym514juApPDCn0mh9A+61gp9X8vlkLMqc9UamVxFNi9ZF8eDHRkbQP5MaKDbT2kZJoiZiXukbJF4y1SzuP2F8PPEMtc65LC9m8VL8jGsmh0jhQJP2zWLoxQF2WReTgsFkcMlq4cPLtmYkdA9ed2FIkth7CncrAArAy0wjcsxTH8qRjSn2N4tZNxLMzIFg1xoxoSyjgzZ/1Q46wjlRXQY5zQPrEor4HEA0bMZSPQaJw+eRCfqvrosXibeMb9+pVlTvnk9t7O0B2EG9X4HwjPTXWSPjj968Y/+nCCss8JCBYAb2ENyxHn4M+mIPQrfCyg20qjMM/XqV5C683fBxhiKaaKg9EhoIAHDrLWiBSDjXHMZ0+GcfPdjWoEAT8C3nsnuv4c8N1P3zW5taZGwP2O/nRZ6Bk6Bsw3R5IzksBBeoVzBBiE8sQ3/csvmHmvU2AjhO9ffrQOvRvHfkp2jbX+TypcjxHU2m8GeADzyq8wEZ1Ax5y3hArgulFGRUnM48LtHh7yyTWBXi13aENdVa8yajmWPzUzRExsaZyx4X/jX5oB3GwQwvq6h2Twtj93mNuE/ij+PGyGvXRb8etjhPjK5QHPXcGTbRVOCD5J08Kt0=
-  on:
-    tags: true
-    repo: nozimy/number_verify
+    - stage: install
+      script: npm install
+      artifacts:
+        paths:
+          - node_modules/
+    - stage: lint
+      script: npm run lint
+    - stage: build
+      script: npm run build
+      artifacts:
+        paths:
+          - dist/
+    - stage: test
+      script: npm run test
+    - stage: visual-regression-tests
+      script: npm run backstop:test
+    - stage: publish
+      script:
+        - npm run deploy -- --token=$NOW_TOKEN
+    - stage: deploy-npm
+      script: echo "Deploying to npm ..."
+      deploy:
+        provider: npm
+        email: nozimdev@gmail.com
+        api_key:
+          secure: NfQGUW8x2MhRAlYtnB06DZYt6HGMIcSSzAT6wa3vvJlHB6zzUfu/jzYiOm3P8DrZiXVym514juApPDCn0mh9A+61gp9X8vlkLMqc9UamVxFNi9ZF8eDHRkbQP5MaKDbT2kZJoiZiXukbJF4y1SzuP2F8PPEMtc65LC9m8VL8jGsmh0jhQJP2zWLoxQF2WReTgsFkcMlq4cPLtmYkdA9ed2FIkth7CncrAArAy0wjcsxTH8qRjSn2N4tZNxLMzIFg1xoxoSyjgzZ/1Q46wjlRXQY5zQPrEor4HEA0bMZSPQaJw+eRCfqvrosXibeMb9+pVlTvnk9t7O0B2EG9X4HwjPTXWSPjj968Y/+nCCss8JCBYAb2ENyxHn4M+mIPQrfCyg20qjMM/XqV5C683fBxhiKaaKg9EhoIAHDrLWiBSDjXHMZ0+GcfPdjWoEAT8C3nsnuv4c8N1P3zW5taZGwP2O/nRZ6Bk6Bsw3R5IzksBBeoVzBBiE8sQ3/csvmHmvU2AjhO9ffrQOvRvHfkp2jbX+TypcjxHU2m8GeADzyq8wEZ1Ax5y3hArgulFGRUnM48LtHh7yyTWBXi13aENdVa8yajmWPzUzRExsaZyx4X/jX5oB3GwQwvq6h2Twtj93mNuE/ij+PGyGvXRb8etjhPjK5QHPXcGTbRVOCD5J08Kt0=
+        on:
+          tags: true
+          repo: nozimy/number_verify
+

@@ -1,4 +1,4 @@
-# number_verify [![Build Status](https://travis-ci.org/nozimy/number_verify.svg?branch=master)](https://travis-ci.org/nozimy/number_verify)
+# number_verify [![Build Status](https://travis-ci.org/nozimy/number_verify.svg?branch=master)](https://travis-ci.org/nozimy/number_verify)  [![npm version](https://badge.fury.io/js/number_verify.svg)](https://badge.fury.io/js/number_verify)
 
 Компонент для ввода цифр номера телефона с возможной маскированной частью. 
 Длина маскированной части может быть произвольной. 

@@ -6,11 +6,11 @@ services:
   - docker
 stages:
   - install
-#  - lint
+  - lint
   - build
-#  - test
-#  - publish
-#  - visual-regression-tests
+  - test
+  - publish
+  - visual-regression-tests
   - npm release
 branches:
   only:
@@ -26,20 +26,20 @@ jobs:
       artifacts:
         paths:
           - node_modules/
-#    - stage: lint
-#      script: npm run lint
+    - stage: lint
+      script: npm run lint
     - stage: build
       script: npm run build
       artifacts:
         paths:
           - dist/
-#    - stage: test
-#      script: npm run test
-#    - stage: publish
-#      script:
-#        - npm run deploy -- --token=$NOW_TOKEN
-#    - stage: visual-regression-tests
-#      script: npm run backstop:test
+    - stage: test
+      script: npm run test
+    - stage: publish
+      script:
+        - npm run deploy -- --token=$NOW_TOKEN
+    - stage: visual-regression-tests
+      script: npm run backstop:test
     - stage: npm release
       script: echo "Deploying to npm ..."
       deploy:

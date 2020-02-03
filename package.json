@@ -1,6 +1,6 @@
 {
   "name": "number_verify",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Компонент для ввода цифр номера телефона с возможной маскированной частью.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

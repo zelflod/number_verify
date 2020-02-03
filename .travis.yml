@@ -34,11 +34,11 @@ jobs:
           - dist/
     - stage: test
       script: npm run test
-    - stage: visual-regression-tests
-      script: npm run backstop:test
     - stage: publish
       script:
         - npm run deploy -- --token=$NOW_TOKEN
+    - stage: visual-regression-tests
+      script: npm run backstop:test
     - stage: deploy-npm
       script: echo "Deploying to npm ..."
       deploy:

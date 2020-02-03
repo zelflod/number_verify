@@ -8,8 +8,8 @@ stages:
   - lint
   - build
   - test
-  - visual-regression-tests
   - publish
+  - visual-regression-tests
   - deploy-npm
 branches:
   only:
